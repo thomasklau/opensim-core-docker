@@ -18,9 +18,10 @@ RUN apt-get update && apt-get install -y \
   liblapack-dev
 
 # Install Simbody
-RUN git clone https://github.com/simbody/simbody.git ~/simbody-source && \
-    mkdir ~/simbody-build && \
-    cd simbody-build && \
+RUN git clone https://github.com/simbody/simbody.git ~/simbody-source
+
+RUN mkdir ~/simbody-build && \
+    cd ~/simbody-build && \
     cmake ~/simbody-source -DBUILD_BINARY_DIR=~/simbody-build -DCMAKE_INSTALL_PREFIX=~/simbody-install -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_VISUALIZER=off && \
     make -j8 install
 
@@ -28,7 +29,7 @@ RUN git clone https://github.com/simbody/simbody.git ~/simbody-source && \
 RUN git clone https://github.com/opensim-org/opensim-core.git ~/opensim-core-source
 
 RUN mkdir ~/opensim-core-source-build && \
-    cd opensim-core-source-build && \
+    cd ~/opensim-core-source-build && \
     cmake ~/opensim-core-source -DSIMBODY_HOME=/simbody-build/simbody-install && \
     pwd && \
     ls && \
