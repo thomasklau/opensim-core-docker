@@ -23,7 +23,7 @@ RUN git clone https://github.com/simbody/simbody.git ~/simbody-source
 RUN mkdir ~/simbody-build && \
     cd ~/simbody-build && \
     cmake ~/simbody-source -DBUILD_BINARY_DIR=~/simbody-build -DCMAKE_INSTALL_PREFIX=~/simbody-install -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_VISUALIZER=off && \
-    make -j8 install
+    make install
 
 # Install OpenSim
 RUN git clone https://github.com/opensim-org/opensim-core.git ~/opensim-core-source
@@ -33,7 +33,7 @@ RUN mkdir ~/opensim-core-source-build && \
     cmake ~/opensim-core-source -DSIMBODY_HOME=/simbody-build/simbody-install && \
     pwd && \
     ls && \
-    make -j8 install
+    make install
 
 # Define working directory.
 WORKDIR ~/opensim-core-source
