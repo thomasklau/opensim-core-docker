@@ -30,9 +30,7 @@ RUN git clone https://github.com/opensim-org/opensim-core.git ~/opensim-core-sou
 
 RUN mkdir ~/opensim-core-source-build && \
     cd ~/opensim-core-source-build && \
-    cmake ~/opensim-core-source -DSIMBODY_HOME=/simbody-build/simbody-install && \
-    pwd && \
-    ls && \
+    cmake ~/opensim-core-source -DSIMBODY_HOME=~/simbody-install && \
     make install
 
 # Define working directory.
